@@ -1,11 +1,10 @@
 # Plane Garage TON
 
-A library to deploy and manage editable nft collections, NFT, deploy-wallet and proxy-contact (minter of collections) for Plane Garage on TON.
+A library to deploy and manage editable nft collections, NFT and deploy-wallet for Plane Garage on TON.
 
 As mentioned above, basic architecture consists of 4 smart-contracts:
 
 1. **Deploy-wallet** will be the owner of all other smart-contracts and will be used to send internal messages to other smart-contracts (e.g. to send message to collection for it to deploy new NFT or just load other smart-contract with coins)
-2. **Collection-minter** is a special smart-contract that stores the code of collection smart-contact and allows us to deploy new collections just sending an extrernal message to this contract with collection content using lite-cliens (of course this part is abstracted in this library making it even simplier)
 3. **Collection** is a smart-contract of the collection, that has collection content in it's storage (link to JSON-file of collection) and some other data
 4. **NFT** is a smart-contract of particular NFT, that has NFT content in it's storage (link to JSON-file) and some other data
 
