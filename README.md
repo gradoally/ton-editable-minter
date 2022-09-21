@@ -14,6 +14,7 @@ This library has the following features:
 - [Compile deploy-wallet](#compile-deploy-wallet)
 - [Mint deploy-wallet](#mint-deploy-wallet)
 - [Mint collection](#deploy_collection)
+- [Add collection address to file](#add-collection-addr-to-file)
 - [Mint NFT](#deploy_nft)
 - [Edit collection](#edit_collection)
 - [Edit NFT](#edit_nft)
@@ -90,7 +91,25 @@ Example:
 sudo sh use.sh deploy-collection testnet https://cloudflare-ipfs.com/ipfs/ https://cloudflare-ipfs.com/ipfs/bafkreifdmjqhqvh6tpmqnhss3jb3qd7oeg6lbafqi5pyuyxh7ihg3nxw6m 50
 ```
 
-<a name="deploy_nft"/></a>
+<a name="deploy_collection"/></a>
+
+## Add collection address to file
+
+<a name="add-collection-addr-to-file"/></a>
+
+This method creates file src/build/last_collection.txt and writes the address of the lastly deployed collection in it. You can also pass an argument with your file and the method will append the collection address to it. Use pattern below to add collection address to file.
+
+> sudo sh use.sh add-collection-addr-to-file [user_file_directory]
+
+| Argument | Description |
+| --- | --- |
+| [user_file_directory] | Optional. Stipulate the directory of the file you want to append the lastly deployed collection to |
+
+Example:
+
+```bash
+sudo sh use.sh add-collection-addr-to-file
+```
 
 ## Mint NFT
 
@@ -117,7 +136,7 @@ sudo sh use.sh deploy-nft testnet EQCNzB_nhErFna-OgXaeszHF_CvkdZPCuCow5pngjFErJv
 
 Use pattern below to edit your collection.
 
-> sh use.sh edit-collection [net] [collection_addr] [new_base_uri] [new_collection_uri] [new_royalty_numerator]
+> sudo sh use.sh edit-collection [net] [collection_addr] [new_base_uri] [new_collection_uri] [new_royalty_numerator]
 
 | Argument | Description |
 | --- | --- |
@@ -145,7 +164,7 @@ sudo sh use.sh edit-collection testnet EQDkQFpi0wJL08wrPErslfr3i2_pIx4JyLVrfvDzM
 
 Use pattern below to edit your NFT.
 
-> sh use.sh edit-nft [net] [nft_addr] [new_cid]
+> sudo sh use.sh edit-nft [net] [nft_addr] [new_cid]
 
 | Argument | Description |
 | --- | --- |
