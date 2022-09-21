@@ -1,0 +1,16 @@
+"TonUtil.fif" include
+
+// $1: new_cid
+
+<b
+    $1 $, // Put CID to cell
+b>
+
+
+<b
+  436968785 32 u, // op::edit_content() (UINT32 - Big Endian representation)
+  0 64 u, // query_id
+  swap ref, // Storing content ref
+b>
+
+boc>B "src/build/messages/bodies/edit-nft.boc" tuck B>file

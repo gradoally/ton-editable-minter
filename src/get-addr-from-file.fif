@@ -1,0 +1,4 @@
+"TonUtil.fif" include
+"Asm.fif" include
+
+$1 load-address 2dup .addr

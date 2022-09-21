@@ -1,0 +1,120 @@
+#!/usr/bin/fift -s
+"TonUtil.fif" include
+"Asm.fif" include
+
+// $1: base_uri (user)
+// $2: collection_uri
+// $3: royalty_addr
+// $4: owner_addr
+// $5: royalty_numerator (user)
+
+<{
+
+  SETCP0 ACCEPT
+  now PUSHINT
+  "collection/nft-collection-editable.fif" include PUSHREF SETCODE
+  
+}>c =: nft-collection-code
+
+// Specify your own collection base uri
+<b
+
+  1 8 u,
+  $1 $>B B,
+
+b>
+
+// Specify your own collection Uri
+<b
+  1 8 u,
+  $2 $>B B,
+b>
+
+<b
+  swap ref, // Storing clollection ref
+  swap ref, // Storing common ref
+b>
+
+variable content 
+content ! // Storing content cell in a variable
+
+// Specify your own user-friendly address
+
+
+$3 $>smca 0= abort"Specify valid royalty addr"
+
+constant flags
+constant royalty_addr
+constant wc
+
+$4 $>smca 0= abort"Specify valid owner addr"
+constant owner_flags
+constant owner_addr
+constant owner_wc
+
+."Owner address: " owner_wc owner_addr owner_flags .Addr cr
+."Royalty addres: " wc royalty_addr flags .Addr cr
+
+"src/build/nft/nft-item-editable.fif" constant nft_path
+
+
+<b
+  $5 parse-int 16 u,
+  1000 16 u,
+  wc royalty_addr Addr,
+b>
+// Royalty cell
+
+nft_path include // Could return ( tuple methods, cell res_cell )
+// So we get rid of tuple
+
+over
+tuple? { nip } if
+
+
+<b
+  owner_wc owner_addr Addr, // owner_address
+  0 64 u, // next_item_index
+  content @ ref, // content
+  swap ref, // nft_item_code
+  swap ref, // royalty_params
+b>
+
+<b 
+  
+  b{001} s, 
+  nft-collection-code ref, 
+  b{1} s,
+  swap ref, // storage
+  null dict, 
+  
+b>
+
+dup =: state_init
+dup hashu wc swap 2constant contract_addr
+
+contract_addr .addr cr
+
+contract_addr "src/build/collection/nft-collection-editable.addr" save-address-verbose
+
+."NFT collection minter non-bounceable address (for init): " contract_addr 7 .Addr cr
+."NFT collection minter bounceable address (for later access): " contract_addr 6 .Addr cr
+
+<b b> =: init_message
+
+
+<b 
+
+  b{1000100} s, 
+  contract_addr addr,
+  b{000010} s, 
+  state_init <s s, 
+  b{0} s,
+  init_message <s s,
+
+b>
+
+2 boc+>B
+
+"src/build/collection/nft-collection-query.boc" tuck B>file
+."(Saved nft-collection-minter contract creating query to file " type .")" cr

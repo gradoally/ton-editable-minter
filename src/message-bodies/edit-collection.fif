@@ -1,0 +1,53 @@
+"TonUtil.fif" include
+
+// $1: new_base_uri (user input)
+// $2: new_collection_uri (user input)
+// $3: new_royalty_numerator (user input)
+// $4: royalty_addr
+
+$4 $>smca 0= abort"Specify valid royalty addr"
+
+constant flags
+constant royalty_addr
+constant wc
+
+
+// Specify your own collection base uri
+<b
+
+  1 8 u,
+  $1 $>B B,
+
+b>
+
+
+// Specify your own collection Uri
+<b
+  1 8 u,
+  $2 $>B B,
+b>
+
+<b
+  swap ref, // Storing clollection ref
+  swap ref, // Storing common ref
+b>
+
+variable content 
+content ! // Storing content cell in a variable
+
+<b
+  $3 parse-int 16 u,
+  1000 16 u,
+  wc royalty_addr Addr,
+b>
+
+<b
+  4 32 u, // op: change content
+  0 64 u, // query_id
+  content @ ref, // Storing content ref
+  swap ref, // storing royalty params ref
+b>
+
+boc>B "src/build/messages/bodies/edit-collection.boc" tuck B>file
+
+

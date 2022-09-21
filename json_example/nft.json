@@ -1,0 +1,35 @@
+{
+  "attributes" : [
+    {
+      "trait_type" : "Plane",
+      "value":"Mark"
+    },
+    {
+      "trait_type" : "Color",
+      "value":"Yellow"
+    },
+    {
+      "trait_type" : "Propeller",
+      "value":"Bronze"
+    },
+    {
+      "trait_type" : "Flaps",
+      "value":"Silver"
+    },
+    {
+      "trait_type" : "Rotor",
+      "value":"Blue"
+    },
+    {
+      "trait_type" : "Wheels",
+      "value":"Black"
+    },
+    {
+      "trait_type" : "Background",
+      "value":"White"
+    }
+  ],
+  "description" : "SCORE: 333\nKILLS: 1\nDAMAGE: 100\nMATCHES: 1\nWINRATE: 100%",
+  "image": "https://cloudflare-ipfs.com/ipfs/bafkreibnnimhds4mjmtigs2p7intjqxth6imvkvjqhsthlcbti4e4gmokm",
+  "name" : "Plane #1"
+}

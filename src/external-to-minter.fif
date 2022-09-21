@@ -1,0 +1,99 @@
+#!/usr/bin/fift -s
+"TonUtil.fif" include
+"Asm.fif" include
+
+// $1: minter_addr
+// $2: base_uri (user)
+// $3: collection_uri
+// $4: royalty_addr
+// $5: owner_addr
+// $6: royalty_numerator (user)
+// $7: seqno
+
+$1 parse-smc-addr drop 2=: minter_addr // parse minter_addr
+
+// Specify your own collection base uri
+<b
+
+  1 8 u,
+  $2 $>B B,
+
+b>
+
+
+// Specify your own collection Uri
+<b
+  1 8 u,
+  $3 $>B B,
+b>
+
+<b
+  swap ref, // Storing clollection ref
+  swap ref, // Storing common ref
+b>
+
+variable content 
+content ! // Storing content cell in a variable
+
+// Specify your own user-friendly address
+
+
+$4 $>smca 0= abort"Specify valid royalty addr"
+
+constant flags
+constant royalty_addr
+constant wc
+
+$5 $>smca 0= abort"Specify valid owner addr"
+constant owner_flags
+constant owner_addr
+constant owner_wc
+
+."Owner address: " owner_wc owner_addr owner_flags .Addr cr
+."Royalty addres: " wc royalty_addr flags .Addr cr
+
+"src/build/nft/nft-item-editable.fif" constant nft_path
+
+
+<b
+  $6 parse-int 16 u,
+  1000 16 u,
+  wc royalty_addr Addr,
+b>
+// Royalty cell
+
+nft_path include // Could return ( tuple methods, cell res_cell )
+// So we get rid of tuple
+
+over
+tuple? { nip } if
+
+
+<b
+  owner_wc owner_addr Addr, // owner_address
+  0 64 u, // next_item_index
+  content @ ref, // content
+  swap ref, // nft_item_code
+  swap ref, // royalty_params
+b>
+
+<b
+  $7 parse-int 32 u, // seqno
+  1 32 u, // op
+  swap ref, // collection data
+b> =: msg
+
+<b
+
+  b{1000} s, 
+  minter_addr Addr, 
+  0 Gram,
+  b{00} s,
+  msg <s s, // msg_body
+
+b>
+
+dup ."External message for initialization is " <s csr. cr
+2 boc+>B dup Bx. cr
+
+"src/build/messages/mint_collection.boc" tuck B>file
