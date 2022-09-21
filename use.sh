@@ -157,7 +157,7 @@ elif [ $1 = "deploy-collection" ]; then
     send_boc $net src/build/collection/nft-collection-query.boc $action_name
 
 # sh use.sh add-collection-addr-to-file [user_file_directory]
-elif [ $1 = "write-collection-addr-to-file" ]; then
+elif [ $1 = "add-collection-addr-to-file" ]; then
 
     action_name=$1
 
