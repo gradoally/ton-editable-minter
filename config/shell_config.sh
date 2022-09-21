@@ -3,9 +3,9 @@
 # Скачать бинарники (пребилды) func, fift и lite-client можно тут: https://github.com/ton-blockchain/ton/actions?query=branch%3Amaster+is%3Acompleted
 
 # Пути к бинарникам func и fift (надо указать свои). 
-path_to_func_binaries=/Users/vsevolodignatev/Desktop/Projects/ton-macos-binaries/crypto/func # func
-path_to_fift_binaries=/Users/vsevolodignatev/Desktop/Projects/ton-macos-binaries/crypto/fift # fift
-path_to_lite_client_binaries=/Users/vsevolodignatev/Desktop/Projects/ton-macos-binaries/lite-client/lite-client # lite-client
+path_to_func_binaries=ton-binaries-ubuntu/func # func
+path_to_fift_binaries=ton-binaries-ubuntu/fift # fift
+path_to_lite_client_binaries=ton-binaries-ubuntu/lite-client # lite-client
 
 
 # Пути к библиотекам func и fift
