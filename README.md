@@ -90,7 +90,7 @@ Example:
 ./use.sh deploy-collection testnet https://cloudflare-ipfs.com/ipfs/ https://cloudflare-ipfs.com/ipfs/bafkreifdmjqhqvh6tpmqnhss3jb3qd7oeg6lbafqi5pyuyxh7ihg3nxw6m 50
 ```
 
-<a name="add-collection-addr-to-file"/>
+<a name="add_collection_addr_to_file"/>
 
 ## Add collection address to file
 
