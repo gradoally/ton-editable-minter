@@ -10,10 +10,10 @@ As mentioned above, basic architecture consists of 4 smart-contracts:
 
 This library has the following features:
 
-- [Compile deploy-wallet](#compile-deploy-wallet)
-- [Mint deploy-wallet](#mint-deploy-wallet)
+- [Compile deploy-wallet](#compile_deploy_wallet)
+- [Mint deploy-wallet](#mint_deploy_wallet)
 - [Mint collection](#deploy_collection)
-- [Add collection address to file](#add-collection-addr-to-file)
+- [Add collection address to file](#add_collection_addr_to_file)
 - [Mint NFT](#deploy_nft)
 - [Edit collection](#edit_collection)
 - [Edit NFT](#edit_nft)
@@ -31,7 +31,7 @@ path_to_fift_binaries=YOUR_PATH # fift
 path_to_lite_client_binaries=YOUR_PATH # lite-client
 ```
 
-<a name="compile-deploy-wallet"/></a>
+<a name="compile_deploy_wallet"/>
 
 ### Step 2: Compile deploy-wallet
 
@@ -51,7 +51,7 @@ You will find the address of your future wallet (where you need to send coins) i
 
 > new wallet address = COPY_ADDRESS_THAT_WILL_BE_HERE
 
-<a name="mint-deploy-wallet"/></a>
+<a name="mint_deploy_wallet"/>
 
 ### Step 4: Mint deploy-wallet
 
@@ -69,7 +69,7 @@ Example:
 ./use.sh deploy-wallet testnet
 ```
 
-<a name="deploy_collection"/></a>
+<a name="deploy_collection"/>
 
 ## Mint collection
 
@@ -90,11 +90,9 @@ Example:
 ./use.sh deploy-collection testnet https://cloudflare-ipfs.com/ipfs/ https://cloudflare-ipfs.com/ipfs/bafkreifdmjqhqvh6tpmqnhss3jb3qd7oeg6lbafqi5pyuyxh7ihg3nxw6m 50
 ```
 
-<a name="deploy_collection"/></a>
+<a name="add-collection-addr-to-file"/>
 
 ## Add collection address to file
-
-<a name="add-collection-addr-to-file"/></a>
 
 This method creates file src/build/last_collection.txt and writes the address of the lastly deployed collection in it. You can also pass an argument with your file and the method will append the collection address to it. Use pattern below to add collection address to file.
 
@@ -109,6 +107,8 @@ Example:
 ```bash
 ./use.sh add-collection-addr-to-file
 ```
+
+<a name="deploy_nft"/>
 
 ## Mint NFT
 
@@ -129,7 +129,7 @@ Example:
 ./use.sh deploy-nft testnet EQCNzB_nhErFna-OgXaeszHF_CvkdZPCuCow5pngjFErJvfe 0 bafkreic27uqjmsam4ghn7gch4ldhok7h2wthzdtc7stpjdrvlitwxh3mqi
 ```
 
-<a name="edit_collection"/></a>
+<a name="edit_collection"></a>
 
 ## Edit collection
 
@@ -157,7 +157,7 @@ You can change data back after testing:
 ./use.sh edit-collection testnet EQDkQFpi0wJL08wrPErslfr3i2_pIx4JyLVrfvDzMsavDhYA https://cloudflare-ipfs.com/ipfs/ https://cloudflare-ipfs.com/ipfs/bafkreifdmjqhqvh6tpmqnhss3jb3qd7oeg6lbafqi5pyuyxh7ihg3nxw6m 50
 ```
 
-<a name="edit_nft"/></a>
+<a name="edit_nft"/>
 
 ## Edit NFT
 
