@@ -17,7 +17,7 @@ This library has the following features:
 - [Mint NFT](#deploy_nft)
 - [Edit collection](#edit_collection)
 - [Edit NFT](#edit_nft)
-- Transfer NFT (Coming soon)
+- [Transfer NFT](#transfer_nft)
 
 ## Installation
 
@@ -181,4 +181,24 @@ You can change data back after testing:
 
 ```bash
 ./use.sh edit-nft testnet EQD1PZVkaUM1jAaf12aChzlLImJZj3IPjS2BfSzunuPY4Lm2 bafkreic27uqjmsam4ghn7gch4ldhok7h2wthzdtc7stpjdrvlitwxh3mqi
+```
+
+<a name="transfer_nft"/>
+
+## Transfer NFT
+
+Use pattern below to transfer your NFT (Deploy-wallet should be the owner of the nft)
+
+> ./use.sh edit-nft [net] [nft_addr] [new_owner]
+
+| Argument | Description |
+| --- | --- |
+| [net] | Stipulate "testnet" or "mainnet" |
+| [nft_addr] | Address of the nft you want to transfer |
+| [new_owner] | Address of the new owner |
+
+Example:
+
+```bash
+./use.sh transfer-nft testnet EQD9T_-01dCe6BevqFJOGOkJaQe7iO07Ylp2-sKxq01td5Zt EQD57OL7n9KjwN5vxrW5KOJ-WIQTEw85mSMXmkdcSS_eLzi7
 ```
