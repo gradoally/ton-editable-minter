@@ -1,0 +1,19 @@
+"Asm.fif" include
+"TonUtil.fif" include
+"GetOpt.fif" include
+
+// $1: new_owner
+
+$1 parse-smc-addr drop 2=: new_owner
+
+
+<b
+  1607220500 32 u, // op::transfer() (UINT32 - Big Endian representation)
+  0 64 u, // query_id
+  new_owner Addr, // new_owner
+  0 00 u, // response_destination = addr_none
+  0 1 u, // custom_payload
+  5000000 Gram, // forward_amount
+b>
+
+boc>B "src/build/messages/bodies/transfer-nft.boc" tuck B>file
