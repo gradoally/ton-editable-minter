@@ -40,7 +40,7 @@ First you need to compile your deploy wallet, that will send internal messages t
 Example:
 
 ```bash
-sudo sh use.sh compile-wallet
+./use.sh compile-wallet
 ```
 
 ### Step 3: Load TON's
@@ -57,7 +57,7 @@ You will find the address of your future wallet (where you need to send coins) i
 
 Use command below to deploy wallet:
 
-> sudo sh use.sh deploy-wallet [net]
+> ./use.sh deploy-wallet [net]
 
 | Argument | Description |
 | --- | --- |
@@ -66,7 +66,7 @@ Use command below to deploy wallet:
 Example:
 
 ```bash
-sudo sh use.sh deploy-wallet testnet
+./use.sh deploy-wallet testnet
 ```
 
 <a name="deploy_collection"/></a>
@@ -75,7 +75,7 @@ sudo sh use.sh deploy-wallet testnet
 
 Use pattern below to deploy your collection.
 
-> sudo sh use.sh deploy-collection [net] [gateway_base_uri] [collection_uri] [royalty percent * 10]
+> ./use.sh deploy-collection [net] [gateway_base_uri] [collection_uri] [royalty percent * 10]
 
 | Argument | Description |
 | --- | --- |
@@ -87,7 +87,7 @@ Use pattern below to deploy your collection.
 Example:
 
 ```bash
-sudo sh use.sh deploy-collection testnet https://cloudflare-ipfs.com/ipfs/ https://cloudflare-ipfs.com/ipfs/bafkreifdmjqhqvh6tpmqnhss3jb3qd7oeg6lbafqi5pyuyxh7ihg3nxw6m 50
+./use.sh deploy-collection testnet https://cloudflare-ipfs.com/ipfs/ https://cloudflare-ipfs.com/ipfs/bafkreifdmjqhqvh6tpmqnhss3jb3qd7oeg6lbafqi5pyuyxh7ihg3nxw6m 50
 ```
 
 <a name="deploy_collection"/></a>
@@ -98,7 +98,7 @@ sudo sh use.sh deploy-collection testnet https://cloudflare-ipfs.com/ipfs/ https
 
 This method creates file src/build/last_collection.txt and writes the address of the lastly deployed collection in it. You can also pass an argument with your file and the method will append the collection address to it. Use pattern below to add collection address to file.
 
-> sudo sh use.sh add-collection-addr-to-file [user_file_directory]
+> ./use.sh add-collection-addr-to-file [user_file_directory]
 
 | Argument | Description |
 | --- | --- |
@@ -107,14 +107,14 @@ This method creates file src/build/last_collection.txt and writes the address of
 Example:
 
 ```bash
-sudo sh use.sh add-collection-addr-to-file
+./use.sh add-collection-addr-to-file
 ```
 
 ## Mint NFT
 
 Use the following pattern to deploy NFT
 
-> sudo sh use.sh deploy-nft [net] [collection_addr] [nft_index] [CID]
+> ./use.sh deploy-nft [net] [collection_addr] [nft_index] [CID]
 
 | Argument | Description |
 | --- | --- |
@@ -126,7 +126,7 @@ Use the following pattern to deploy NFT
 Example:
 
 ```bash
-sudo sh use.sh deploy-nft testnet EQCNzB_nhErFna-OgXaeszHF_CvkdZPCuCow5pngjFErJvfe 0 bafkreic27uqjmsam4ghn7gch4ldhok7h2wthzdtc7stpjdrvlitwxh3mqi
+./use.sh deploy-nft testnet EQCNzB_nhErFna-OgXaeszHF_CvkdZPCuCow5pngjFErJvfe 0 bafkreic27uqjmsam4ghn7gch4ldhok7h2wthzdtc7stpjdrvlitwxh3mqi
 ```
 
 <a name="edit_collection"/></a>
@@ -135,7 +135,7 @@ sudo sh use.sh deploy-nft testnet EQCNzB_nhErFna-OgXaeszHF_CvkdZPCuCow5pngjFErJv
 
 Use pattern below to edit your collection.
 
-> sudo sh use.sh edit-collection [net] [collection_addr] [new_base_uri] [new_collection_uri] [new_royalty_numerator]
+> ./use.sh edit-collection [net] [collection_addr] [new_base_uri] [new_collection_uri] [new_royalty_numerator]
 
 | Argument | Description |
 | --- | --- |
@@ -148,13 +148,13 @@ Use pattern below to edit your collection.
 Example:
 
 ```bash
-sudo sh use.sh edit-collection testnet EQDkQFpi0wJL08wrPErslfr3i2_pIx4JyLVrfvDzMsavDhYA https://ipfs.io/ipfs/ https://ipfs.io/ipfs/bafkreicqouhcwhkiza7ogvpo7ncmzzhhfdvdt65xjdhmycjegqwyh6e3h4 10
+./use.sh edit-collection testnet EQDkQFpi0wJL08wrPErslfr3i2_pIx4JyLVrfvDzMsavDhYA https://ipfs.io/ipfs/ https://ipfs.io/ipfs/bafkreicqouhcwhkiza7ogvpo7ncmzzhhfdvdt65xjdhmycjegqwyh6e3h4 10
 ```
 
 You can change data back after testing:
 
 ```bash
-sudo sh use.sh edit-collection testnet EQDkQFpi0wJL08wrPErslfr3i2_pIx4JyLVrfvDzMsavDhYA https://cloudflare-ipfs.com/ipfs/ https://cloudflare-ipfs.com/ipfs/bafkreifdmjqhqvh6tpmqnhss3jb3qd7oeg6lbafqi5pyuyxh7ihg3nxw6m 50
+./use.sh edit-collection testnet EQDkQFpi0wJL08wrPErslfr3i2_pIx4JyLVrfvDzMsavDhYA https://cloudflare-ipfs.com/ipfs/ https://cloudflare-ipfs.com/ipfs/bafkreifdmjqhqvh6tpmqnhss3jb3qd7oeg6lbafqi5pyuyxh7ihg3nxw6m 50
 ```
 
 <a name="edit_nft"/></a>
@@ -163,7 +163,7 @@ sudo sh use.sh edit-collection testnet EQDkQFpi0wJL08wrPErslfr3i2_pIx4JyLVrfvDzM
 
 Use pattern below to edit your NFT.
 
-> sudo sh use.sh edit-nft [net] [nft_addr] [new_cid]
+> ./use.sh edit-nft [net] [nft_addr] [new_cid]
 
 | Argument | Description |
 | --- | --- |
@@ -174,11 +174,11 @@ Use pattern below to edit your NFT.
 Example:
 
 ```bash
-sudo sh use.sh edit-nft testnet EQD1PZVkaUM1jAaf12aChzlLImJZj3IPjS2BfSzunuPY4Lm2 bafkreifhuhy3u3c2lvu26us6kulx64gicfjy7uvu5vnrf5c6qsejxaeaza
+./use.sh edit-nft testnet EQD1PZVkaUM1jAaf12aChzlLImJZj3IPjS2BfSzunuPY4Lm2 bafkreifhuhy3u3c2lvu26us6kulx64gicfjy7uvu5vnrf5c6qsejxaeaza
 ```
 
 You can change data back after testing:
 
 ```bash
-sudo sh use.sh edit-nft testnet EQD1PZVkaUM1jAaf12aChzlLImJZj3IPjS2BfSzunuPY4Lm2 bafkreic27uqjmsam4ghn7gch4ldhok7h2wthzdtc7stpjdrvlitwxh3mqi
+./use.sh edit-nft testnet EQD1PZVkaUM1jAaf12aChzlLImJZj3IPjS2BfSzunuPY4Lm2 bafkreic27uqjmsam4ghn7gch4ldhok7h2wthzdtc7stpjdrvlitwxh3mqi
 ```

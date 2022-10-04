@@ -12,7 +12,7 @@
 
   SETCP0 ACCEPT
   now PUSHINT
-  "collection/nft-collection-editable.fif" include PUSHREF SETCODE
+  "build/collection/nft-collection-editable.fif" include PUSHREF SETCODE
   
 }>c =: nft-collection-code
 

@@ -1,4 +1,33 @@
-source config/shell_config.sh # PATHes to nessesary files
+#!/root//bash/bash-3.2.57/bash
+
+# Скачать бинарники (пребилды) func, fift и lite-client можно тут: https://github.com/ton-blockchain/ton/actions?query=branch%3Amaster+is%3Acompleted
+
+# Пути к бинарникам func и fift (надо указать свои). 
+path_to_func_binaries=/root/ton/ton-build/crypto/func # func
+path_to_fift_binaries=/root/ton/ton-build/crypto/fift # fift
+path_to_lite_client_binaries=/root/ton/ton-build/lite-client/lite-client # lite-client
+
+
+# Пути к библиотекам func и fift
+fift_libs=lib/fift # там находятся Asm.fif, TonUtil.fif, Fift.fif и т.д.
+func_stdlib=lib/func/stdlib.fc # стандартная библиотека FunC
+fift_cli=lib/cli.fif # Библиотека CLI
+
+# Конфиги
+mainnet=config/global.config.json # mainnet
+testnet=config/testnet-global.config.json # testnet
+
+# Пути к вспомогательным файлам
+func_params=utils/params.fc # проверка воркчейна, включаем во все смарты
+func_op_codes=utils/op-codes.fc # выносим op-коды в этот файл
+
+# Пути к нашим контрактам
+func_collection_contract=src/contracts/nft-collection-editable.fc # контракт коллекции
+func_nft_contract=src/contracts/nft-item-editable.fc
+func_minter_contract=src/contracts/nft-collection-minter.fc # контракт минтера коллекции
+
+# Пути к папкам
+fift_contracts=src/build # сюда скомпилируются fift-файлы
 
 get_addr_from_file () { # pass directory to addr file and name of output var
 
@@ -63,7 +92,6 @@ compile_collection () {
 
     create_fift_from_func_with_args $func_nft_contract src/build/nft/nft-item-editable.fif $func_stdlib $func_params $func_op_codes
     create_fift_from_func_with_args $func_collection_contract src/build/collection/nft-collection-editable.fif $func_stdlib $func_params $func_op_codes
-
     $path_to_fift_binaries -I $fift_libs -I $fift_contracts -s src/compile-collection.fif $base_uri $collection_uri $deploy_wallet_addr $deploy_wallet_addr $royalty_numerator # Запускаем скрипт, который создает boc-файл контракта минтера коллекций
 
 }
@@ -87,7 +115,7 @@ send_ton_to_addr () { # three arguments: dest_addr, seqno, amount, net
 
         if [ $? == "0" ];
         then
-            echo "Success in attempt #$i"
+            echo "Success in attempt №$i"
             break
         fi
 
@@ -114,7 +142,7 @@ send_boc () { # [net] [msg_directory] [action_name]
             echo "Net argument is wrong. Should use testnet or mainnet"
         fi
 
-        if [ $? == "0" ];
+        if [ $? -eq 0 ];
         then
             echo "Success to $action_name in attempt #$i"
             break
