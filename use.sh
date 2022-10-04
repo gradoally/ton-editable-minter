@@ -251,6 +251,22 @@ elif [ $1 = "edit-nft" ]; then
     msg_directory="src/build/messages/edit-nft-full.boc"
     send_boc $net $msg_directory $action_name
 
+# sh use.sh transfer-nft [net] [nft_addr] [new_owner]
+# sh use.sh transfer-nft testnet EQD9T_-01dCe6BevqFJOGOkJaQe7iO07Ylp2-sKxq01td5Zt EQD57OL7n9KjwN5vxrW5KOJ-WIQTEw85mSMXmkdcSS_eLzi7
+elif [ $1 = "transfer-nft" ]; then
+
+    action_name=$1
+    net=$2
+    nft_addr=$3
+    new_owner=$4
+
+    $path_to_fift_binaries -I $fift_libs -L $fift_cli -s src/message-bodies/transfer-nft.fif $new_owner # Create boc-file of message body
+    get_addr_from_file src/build/wallet/deploy-wallet.addr deploy_wallet_addr # get deploy-wallet addr and saves it to $deploy_wallet_addr
+    get_seqno_by_addr $net $deploy_wallet_addr deploy_wallet_seqno
+    $path_to_fift_binaries -I $fift_libs -s src/external-to-wallet.fif plane_garage_wallet $nft_addr $deploy_wallet_seqno .01 -B src/build/messages/bodies/transfer-nft.boc -n src/build/messages/transfer-nft-full # Add message body to message and create boc-file of full message
+    msg_directory="src/build/messages/transfer-nft-full.boc"
+    send_boc $net $msg_directory $action_name
+
 # Wrong first argument
 else
     echo "First argument is wrong! Please look readme.md"
