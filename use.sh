@@ -267,29 +267,6 @@ elif [ $1 = "transfer-nft" ]; then
     msg_directory="src/build/messages/transfer-nft-full.boc"
     send_boc $net $msg_directory $action_name
 
-elif [ $1 = "compile-testgiver" ]; then
-
-    $path_to_fift_binaries -I $fift_libs -L $fift_cli -s src/new-testgiver.fif -1  # Create boc-file of message body
-
-elif [ $1 = "deploy-testgiver" ]; then
-
-    action_name=$1
-
-    msg_directory="src/build/testgiver/new-testgiver.boc"
-    send_boc testnet $msg_directory $action_name
-
-elif [ $1 = "get-from-testgiver" ]; then
-
-    action_name=$1
-    testgiver_addr=$2
-    amount=$3
-
-    get_addr_from_file src/build/wallet/deploy-wallet.addr deploy_wallet_addr # get deploy-wallet addr and saves it to $deploy_wallet_addr
-    get_seqno_by_addr testnet $testgiver_addr testgiver_seqno
-    $path_to_fift_binaries -I $fift_libs -L $fift_cli -s src/testgiver.fif $deploy_wallet_addr $testgiver_seqno $amount # Create boc-file of message body
-    msg_directory="src/build/testgiver/testgiver-query.boc"
-    send_boc testnet $msg_directory $action_name
-
 # Wrong first argument
 else
     echo "First argument is wrong! Please look readme.md"
