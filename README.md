@@ -189,7 +189,7 @@ You can change data back after testing:
 
 Use pattern below to transfer your NFT (Deploy-wallet should be the owner of the nft).
 
-> ./use.sh edit-nft [net] [nft_addr] [new_owner]
+> ./use.sh transfer-nft [net] [nft_addr] [new_owner]
 
 | Argument | Description |
 | --- | --- |
