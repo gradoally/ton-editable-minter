@@ -213,8 +213,10 @@ elif [ $1 = "deploy-nft" ]; then
     json_filename=$5
 
     get_addr_from_file src/build/wallet/deploy-wallet.addr deploy_wallet_addr # get deploy-wallet addr and saves it to $deploy_wallet_addr
+    rm -f src/build/messages/bodies/deploy-nft.boc
     $path_to_fift_binaries -I $fift_libs -L $fift_cli -s src/message-bodies/deploy-nft.fif $deploy_wallet_addr $deploy_wallet_addr $json_filename $nft_index # Create boc-file of message body
     get_seqno_by_addr $net $deploy_wallet_addr deploy_wallet_seqno
+    rm -f src/build/messages/bodies/deploy-nft-full.boc
     $path_to_fift_binaries -I $fift_libs -s src/external-to-wallet.fif plane_garage_wallet $collection_addr $deploy_wallet_seqno .05 -B src/build/messages/bodies/deploy-nft.boc -n src/build/messages/deploy-nft-full # Add message body to message and create boc-file of full message
     msg_directory="src/build/messages/deploy-nft-full.boc"
     send_boc $net $msg_directory $action_name
