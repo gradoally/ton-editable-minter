@@ -168,7 +168,7 @@ Use pattern below to edit your NFT.
 | Argument | Description |
 | --- | --- |
 | [net] | Stipulate "testnet" or "mainnet" |
-| [collection_addr] | Address of the smart-contract of your NFT in user-friendly format |
+| [nft_addr] | Address of the smart-contract of your NFT in user-friendly format |
 | [new_cid] | CID of the new JSON-file of your particular NFT that you get on IPFS |
 
 Example:
