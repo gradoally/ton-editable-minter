@@ -219,7 +219,7 @@ elif [ $1 = "deploy-nft" ]; then
     msg_directory="src/build/messages/deploy-nft-full.boc"
     send_boc $net $msg_directory $action_name
 
-# sh use.sh edit-collection [net] [collection_addr] [new_base_uri] [new_collection_uri] [new_royalty_numerator]
+# sh use.sh edit-collection [net] [collection_addr] [new_base_uri] [new_collection_uri] [new_royalty_numerator] [new_royalty_addr]
 elif [ $1 = "edit-collection" ]; then
 
     action_name=$1
@@ -228,9 +228,10 @@ elif [ $1 = "edit-collection" ]; then
     new_base_uri=$4
     new_collection_uri=$5
     new_royalty_numerator=$6
+    new_royalty_addr=$7
 
     get_addr_from_file src/build/wallet/deploy-wallet.addr deploy_wallet_addr # get deploy-wallet addr and saves it to $deploy_wallet_addr
-    $path_to_fift_binaries -I $fift_libs -L $fift_cli -s src/message-bodies/edit-collection.fif $new_base_uri $new_collection_uri $new_royalty_numerator $deploy_wallet_addr # Create boc-file of message body
+    $path_to_fift_binaries -I $fift_libs -L $fift_cli -s src/message-bodies/edit-collection.fif $new_base_uri $new_collection_uri $new_royalty_numerator $new_royalty_addr # Create boc-file of message body
     get_seqno_by_addr $net $deploy_wallet_addr deploy_wallet_seqno
     $path_to_fift_binaries -I $fift_libs -s src/external-to-wallet.fif plane_garage_wallet $collection_addr $deploy_wallet_seqno .05 -B src/build/messages/bodies/edit-collection.boc -n src/build/messages/edit-collection-full # Add message body to message and create boc-file of full message
     msg_directory="src/build/messages/edit-collection-full.boc"

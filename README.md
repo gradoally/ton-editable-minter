@@ -135,7 +135,7 @@ Example:
 
 Use pattern below to edit your collection.
 
-> ./use.sh edit-collection [net] [collection_addr] [new_base_uri] [new_collection_uri] [new_royalty_numerator]
+> ./use.sh edit-collection [net] [collection_addr] [new_base_uri] [new_collection_uri] [new_royalty_numerator] [new_royalty_addr]
 
 | Argument | Description |
 | --- | --- |
@@ -144,11 +144,12 @@ Use pattern below to edit your collection.
 | [new_base_uri] | Base URI of the Web3 gateway you use (everything in URL exept CID of the particular file on IPFS), e.g. https://cloudflare-ipfs.com/ipfs/ or https://ipfs.io/ipfs/. You can find full list of available gateways for IPFS [here](https://ipfs.github.io/public-gateway-checker/) |
 | [new_collection_uri] | Full URL to the JSON-file of your collection |
 | [new_royalty_numerator] | Integer that stands for royalty, e.g. if you want to set royalty to 2,5% you should stipulate "25" as an argument |
+| [new_royalty_addr] | New address, where earned royalty will be sent |
 
 Example:
 
 ```bash
-./use.sh edit-collection testnet EQDkQFpi0wJL08wrPErslfr3i2_pIx4JyLVrfvDzMsavDhYA https://ipfs.io/ipfs/ https://ipfs.io/ipfs/bafkreicqouhcwhkiza7ogvpo7ncmzzhhfdvdt65xjdhmycjegqwyh6e3h4 10
+./use.sh edit-collection testnet EQDkQFpi0wJL08wrPErslfr3i2_pIx4JyLVrfvDzMsavDhYA https://ipfs.io/ipfs/ https://ipfs.io/ipfs/bafkreicqouhcwhkiza7ogvpo7ncmzzhhfdvdt65xjdhmycjegqwyh6e3h4 10 EQD57OL7n9KjwN5vxrW5KOJ-WIQTEw85mSMXmkdcSS_eLzi7
 ```
 
 You can change data back after testing:
