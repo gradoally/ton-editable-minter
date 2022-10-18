@@ -268,6 +268,19 @@ elif [ $1 = "transfer-nft" ]; then
     msg_directory="src/build/messages/transfer-nft-full.boc"
     send_boc $net $msg_directory $action_name
 
+# sh use.sh withdraw-ton-from-deploy-wallet [net] [ton_amount] [withdrawal_addr]
+# sh use.sh withdraw-ton-from-deploy-wallet testnet 1 EQD57OL7n9KjwN5vxrW5KOJ-WIQTEw85mSMXmkdcSS_eLzi7
+elif [ $1 = "withdraw-ton-from-deploy-wallet" ]; then
+
+    action_name=$1
+    net=$2
+    ton_amount=$3
+    withdrawal_addr=$4
+
+    get_addr_from_file src/build/wallet/deploy-wallet.addr deploy_wallet_addr # get deploy-wallet addr and saves it to $deploy_wallet_addr
+    get_seqno_by_addr $net $deploy_wallet_addr deploy_wallet_seqno
+    send_ton_to_addr $withdrawal_addr $deploy_wallet_seqno $ton_amount $net
+
 # Wrong first argument
 else
     echo "First argument is wrong! Please look readme.md"

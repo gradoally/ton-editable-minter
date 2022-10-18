@@ -18,6 +18,7 @@ This library has the following features:
 - [Edit collection](#edit_collection)
 - [Edit NFT](#edit_nft)
 - [Transfer NFT](#transfer_nft)
+- [Withdraw ton from deloy-wallet](#withdraw_ton_from_deploy_wallet)
 
 ## Installation
 
@@ -202,4 +203,24 @@ Example:
 
 ```bash
 ./use.sh transfer-nft testnet EQD9T_-01dCe6BevqFJOGOkJaQe7iO07Ylp2-sKxq01td5Zt EQD57OL7n9KjwN5vxrW5KOJ-WIQTEw85mSMXmkdcSS_eLzi7
+```
+
+<a name="withdraw_ton_from_deploy_wallet"/>
+
+## Withdraw ton from deloy-wallet
+
+Use pattern below to withdraw ton from deloy-wallet to your other wallet.
+
+> ./use.sh withdraw-ton-from-deploy-wallet [net] [ton_amount] [withdrawal_addr]
+
+| Argument | Description |
+| --- | --- |
+| [net] | Stipulate "testnet" or "mainnet" |
+| [ton_amount] | The amount of tons you want to transfer |
+| [withdrawal_addr] | The address where the coins will be transfered |
+
+Example:
+
+```bash
+./use.sh withdraw-ton-from-deploy-wallet testnet 1 EQD57OL7n9KjwN5vxrW5KOJ-WIQTEw85mSMXmkdcSS_eLzi7
 ```
